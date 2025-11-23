@@ -1,7 +1,7 @@
-import { Response } from 'got'
 import { checkError } from '../error'
 
-export const checkErrorHook = (response: Response, _retryWithMergedOptions) => {
-  checkError(response.body.toString())
-  return response
+export const checkErrorHook = async (response: Response) => {
+  const clonedResponse = response.clone()
+  const text = await clonedResponse.text()
+  checkError(text)
 }

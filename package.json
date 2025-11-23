@@ -1,7 +1,7 @@
 {
-  "name": "cloud189-sdk",
-  "version": "1.0.8",
-  "description": "基于node.js的第三方天翼云盘SDK",
+  "name": "ecloud-sdk",
+  "version": "1.0.0",
+  "description": "基于fetch API的天翼网盘SDK，支持在Cloudflare Worker中使用",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -14,22 +14,23 @@
     "build": "tsc",
     "docs:build": "npm run build && cd docs && npm run build",
     "docs:dev": "npm run build && cd docs && npm run dev",
-    "test": "node --security-revert=CVE-2023-46809 ./node_modules/mocha/bin/mocha",
+    "test": "mocha",
     "coverage": "nyc npm run test",
     "coveralls": "nyc report --reporter=text-lcov > coverage/lcov.info"
   },
   "author": "wes lin",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wes-lin/cloud189-sdk.git"
+    "url": "git+https://github.com/cuxt/ecloud-sdk.git"
   },
   "keywords": [
-    "天翼网盘sdk"
+    "天翼网盘sdk",
+    "fetch",
+    "cloudflare worker"
   ],
   "license": "MIT",
   "dependencies": {
-    "@netdrive-sdk/log": "1.0.0",
-    "got": "11.8.2"
+    "@netdrive-sdk/log": "1.0.0"
   },
   "engines": {
     "node": ">=16"

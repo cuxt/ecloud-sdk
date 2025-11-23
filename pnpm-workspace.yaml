@@ -1,2 +1,5 @@
 packages:
-  - 'docs'
+  - docs
+
+ignoredBuiltDependencies:
+  - esbuild

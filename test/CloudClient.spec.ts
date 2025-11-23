@@ -228,7 +228,7 @@ describe('CloudClient', () => {
           familyId: '111'
         })
       } catch (error) {
-        expect(error.message).to.contains('Internal Server Error')
+        expect((error as Error).message).to.contains('Internal Server Error')
       }
     })
   })
@@ -240,7 +240,7 @@ describe('CloudClient valid', () => {
       new CloudClient({})
     } catch (err) {
       expect(err).to.be.an('error')
-      expect(err.message).to.equal('Please provide username and password or token or ssonCooike !')
+      expect((err as Error).message).to.equal('Please provide username and password or token or ssonCooike !')
     }
   })
   it('password is empty', () => {
@@ -248,7 +248,7 @@ describe('CloudClient valid', () => {
       new CloudClient({ username: 'username' })
     } catch (err) {
       expect(err).to.be.an('error')
-      expect(err.message).to.equal('Please provide username and password or token or ssonCooike !')
+      expect((err as Error).message).to.equal('Please provide username and password or token or ssonCooike !')
     }
   })
 })
@@ -392,7 +392,7 @@ describe('CloudClient session', () => {
     try {
       await cloudClient.getSession()
     } catch (error) {
-      expect(error.message).to.include('Can not get session')
+      expect((error as Error).message).to.include('Can not get session')
     }
   })
 
@@ -948,7 +948,7 @@ describe('CloudClient upload', () => {
       })
       expect.fail('Should have thrown an error')
     } catch (error) {
-      expect(error.message).to.include('ENOENT')
+      expect((error as Error).message).to.include('ENOENT')
     }
   })
 
@@ -962,7 +962,7 @@ describe('CloudClient upload', () => {
       })
       expect.fail('Should have thrown an error')
     } catch (error) {
-      expect(error.message).to.include('MD5 calculation failed')
+      expect((error as Error).message).to.include('MD5 calculation failed')
     }
   })
 })
@@ -1209,7 +1209,7 @@ describe('CloudClient file operations', () => {
         await cloudClient.createFolder(createRequest)
         expect.fail('Should have thrown an error')
       } catch (error) {
-        expect(error.response?.statusCode).to.equal(400)
+        expect((error as any).response?.statusCode).to.equal(400)
       }
     })
   })
@@ -1274,7 +1274,7 @@ describe('CloudClient file operations', () => {
         await cloudClient.renameFolder(renameRequest)
         expect.fail('Should have thrown an error')
       } catch (error) {
-        expect(error.response?.statusCode).to.equal(404)
+        expect((error as any).response?.statusCode).to.equal(404)
       }
     })
 
@@ -1292,7 +1292,7 @@ describe('CloudClient file operations', () => {
         await cloudClient.renameFolder(renameRequest)
         expect.fail('Should have thrown an error')
       } catch (error) {
-        expect(error.response?.statusCode).to.equal(400)
+        expect((error as any).response?.statusCode).to.equal(400)
       }
     })
 
@@ -1310,7 +1310,7 @@ describe('CloudClient file operations', () => {
         await cloudClient.renameFolder(renameRequest)
         expect.fail('Should have thrown an error')
       } catch (error) {
-        expect(error.response?.statusCode).to.equal(409)
+        expect((error as any).response?.statusCode).to.equal(409)
       }
     })
   })

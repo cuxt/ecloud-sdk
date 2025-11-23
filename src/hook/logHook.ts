@@ -1,7 +1,8 @@
-import { Response } from 'got'
 import { logger } from '../log'
 
-export const logHook = (response: Response, _retryWithMergedOptions) => {
-  logger.debug(`url: ${response.requestUrl}, response: ${response.body})}`)
-  return response
+export const logHook = async (response: Response) => {
+  const clonedResponse = response.clone()
+  const url = clonedResponse.url
+  const body = await clonedResponse.text()
+  logger.debug(`url: ${url}, response: ${body}`)
 }
