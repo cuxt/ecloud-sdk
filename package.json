@@ -1,5 +1,5 @@
 {
-  "name": "ecloud-sdk",
+  "name": "@cuxt/ecloud-sdk",
   "version": "1.0.0",
   "description": "基于fetch API的天翼网盘SDK，支持在Cloudflare Worker中使用",
   "main": "./dist/index.js",
@@ -16,7 +16,8 @@
     "docs:dev": "npm run build && cd docs && npm run dev",
     "test": "mocha",
     "coverage": "nyc npm run test",
-    "coveralls": "nyc report --reporter=text-lcov > coverage/lcov.info"
+    "coveralls": "nyc report --reporter=text-lcov > coverage/lcov.info",
+    "release": "npm run build && npm publish --access public"
   },
   "author": "wes lin",
   "repository": {
